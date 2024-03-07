@@ -44,9 +44,6 @@ filetype plugin on             " Enable filetype-specific plugins
 " colorscheme 0x7A69_dark
 colorscheme 1989
 
-highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
-highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
-highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
 " Transparent background
 let g:disable_bg = 1
 
