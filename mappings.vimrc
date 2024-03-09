@@ -1,17 +1,12 @@
 let mapleader=" "
 
-
 " File Manager
-nnoremap <silent> <leader>e :call ToggleNERDTree()<cr>
-" nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-nnoremap <leader>fw :Rg<cr>
-nnoremap <leader>ff :GitFiles<cr>
+nnoremap <silent> <leader>e :Lexplore<cr>
 
 " Quick write and exit
 nnoremap <leader>q :q<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>Q :q!<cr>
-
 nnoremap <leader>E :e<space>
 
 " Quick open empty buffer
@@ -34,17 +29,34 @@ tnoremap <silent> <c-h> <c-w>h
 tnoremap <silent> <c-j> <c-w>j
 tnoremap <silent> <c-k> <c-w>k
 tnoremap <silent> <c-l> <c-w>l
+
+
+nnoremap <C-Up> :resize +5<CR>
+nnoremap <C-Down> :resize -5<CR>
+nnoremap <C-Right> :vertical resize +5<CR>
+nnoremap <C-Left> :vertical resize -5<CR>
+
 " Quick open terminal
 nnoremap <silent> <leader>t :below terminal<cr>
 
 " Quick edit kitty configuration
 nnoremap <silent> <leader>K :e ~/.config/kitty/kitty.conf<cr>
 
+" Quick edit vimconfiguration
+nnoremap <silent> <leader>V :e $MYVIMRC<cr>
+
 " Buffers
 nnoremap <silent> [b :bp<cr>
 nnoremap <silent> ]b :bn<cr>
+" nnoremap 
+
+
+nnoremap <leader>fw :Rg<cr>
+nnoremap <leader>fg :GitFiles<cr>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fb :Buf<cr>
+nnoremap <leader>fr :Rg<cr>
 nnoremap <leader>bl :buffers<cr>
-nnoremap <leader>b :buffer<space>
 nnoremap <leader>bh :sb<cr>
 nnoremap <leader>bv :vsp<cr>
 nnoremap <leader>ba :%bd\|e#\|bd#<cr>
@@ -58,7 +70,6 @@ nnoremap <silent> <leader>i :f<cr>
 nnoremap <silent> <leader>pc :PlugClean<cr>
 nnoremap <silent> <leader>pu :PlugUpdate<cr>
 nnoremap <silent> <leader>pi :PlugInstall<cr>
-
 
 nnoremap <leader>I :call InsertFileInfo()<CR>
 
@@ -74,7 +85,5 @@ vnoremap <silent> <leader>/ :Commentary<cr>
 
 
 nnoremap <silent> <Leader>C :call NextColor(1)<CR>
-
 nnoremap <silent> \| :vsplit<cr>
 nnoremap <silent> \\ :split<cr>
-

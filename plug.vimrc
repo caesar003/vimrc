@@ -3,14 +3,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
-
-Plug 'preservim/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'PhilRunninger/nerdtree-buffer-ops'
-Plug 'PhilRunninger/nerdtree-visual-selection'
-
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rose-pine/vim'
 Plug 'morhetz/gruvbox'
@@ -23,5 +15,5 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'machakann/vim-highlightedyank'
 call plug#end()

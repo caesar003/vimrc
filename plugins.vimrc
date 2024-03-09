@@ -1,8 +1,7 @@
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
 
-let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeGitStatusUseNerdFonts = 1 
+let g:highlightedyank_highlight_duration = 300
 
 " Git on margin
 let g:gitgutter_sign_added = ''
@@ -16,15 +15,6 @@ let g:gitgutter_sign_modified_removed = ''
 let &t_SI = "\e[5 q"
 let &t_EI = "\e[1 q"
 let g:javascript_enable_domhtmlcss = 1
-
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['node_modules','\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '\.git$']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=0
-let g:NERDTreeMinimalUI=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 30
 
 let g:javascript_plugin_jsdoc = 1
 let g:gitgutter_override_sign_column_highlight = 0
@@ -57,9 +47,9 @@ let g:lightline = {
       \}
       \}
 
-highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
-highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
-highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
+ highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
+ highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
+ highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
 
 " Status Line configuration
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\

@@ -1,5 +1,4 @@
 " Basic settings
-set nocompatible               " Use Vim, not Vi compatibility
 set conceallevel=1             " Conceal text (e.g., for syntax highlighting)
 set number relativenumber      " Show line numbers and relative line numbers
 set encoding=utf-8             " Set the encoding for the file
@@ -37,11 +36,14 @@ set showtabline=1              " Always show the tabline, even if there's only o
 set hidden                     " Allow switching buffers with unsaved changes
 set notimeout
 
-syntax enable                  " Enable syntax highlighting
-filetype plugin on             " Enable filetype-specific plugins
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_winsize=25
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_bufsettings = 'noma nu rnu'
 
-" colorscheme rosepine 
-" colorscheme 0x7A69_dark
+
 colorscheme 1989
 
 " Transparent background
@@ -67,3 +69,4 @@ endif
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
+
