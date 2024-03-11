@@ -25,6 +25,8 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+autocmd FileType netrw nnoremap <silent> <buffer> <c-h> :TmuxNavigateLeft<CR>
+autocmd FileType netrw nnoremap <silent> <buffer> <c-l> :TmuxNavigateRight<CR>
 tnoremap <silent> <c-h> <c-w>h
 tnoremap <silent> <c-j> <c-w>j
 tnoremap <silent> <c-k> <c-w>k
@@ -83,7 +85,7 @@ inoremap <silent> jj <esc>
 vnoremap <leader>y "+y
 vnoremap <silent> <leader>/ :Commentary<cr> 
 
-
 nnoremap <silent> <Leader>C :call NextColor(1)<CR>
 nnoremap <silent> \| :vsplit<cr>
 nnoremap <silent> \\ :split<cr>
+
