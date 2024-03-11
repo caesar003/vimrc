@@ -47,9 +47,9 @@ let g:lightline = {
       \}
       \}
 
- highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
- highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
- highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
+highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
+highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
+highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
 
 " Status Line configuration
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
@@ -70,37 +70,3 @@ let g:go_fold_decl_blocks = 1
 let g:go_fold_function_blocks = 1
 let g:go_fold_struct_blocks = 1
 let g:go_fold_interface_blocks = 1
-
-
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-autocmd FileType netrw nnoremap <silent> <buffer> <c-h> :TmuxNavigateLeft<CR>
-autocmd FileType netrw nnoremap <silent> <buffer> <c-l> :TmuxNavigateRight<CR>
-tnoremap <silent> <c-h> <c-w>h
-tnoremap <silent> <c-j> <c-w>j
-tnoremap <silent> <c-k> <c-w>k
-tnoremap <silent> <c-l> <c-w>l
-
-
-" Floating terminal
-nnoremap   <silent>   <F7>    :FloatermNew<CR>
-tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
-nnoremap   <silent>   <F8>    :FloatermPrev<CR>
-tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
-nnoremap   <silent>   <F9>    :FloatermNext<CR>
-tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   <F12>   :FloatermToggle<CR>
-tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
-
-nnoremap <leader>sr :SessionOpen<space>
-nnoremap <leader>sc :SessionClose<cr>
-nnoremap <leader>ss :SessionSave<cr>
-
-nnoremap <silent> <leader>pc :PlugClean<cr>
-nnoremap <silent> <leader>pu :PlugUpdate<cr>
-nnoremap <silent> <leader>pi :PlugInstall<cr>
-
-nnoremap <silent> <leader>/ :Commentary<cr>
-vnoremap <silent> <leader>/ :Commentary<cr> 
