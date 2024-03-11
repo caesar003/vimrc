@@ -56,3 +56,28 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
+
+let g:go_highlight_parens = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_type_parameters = 'ctermfg=4 cterm=italic'
+let g:go_syntax_enable = 1
+let g:go_highlight_function_calls = 'Type'
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_struct_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_builtins = 1
+let g:go_fold_decl_blocks = 1
+let g:go_fold_function_blocks = 1
+let g:go_fold_struct_blocks = 1
+let g:go_fold_interface_blocks = 1
+
+
+" Floating terminal
+nnoremap   <silent>   <F7>    :FloatermNew<CR>
+tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <F8>    :FloatermPrev<CR>
+tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <F9>    :FloatermNext<CR>
+tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>

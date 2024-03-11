@@ -3,7 +3,6 @@
 Welcome to my Vim configuration tailored for developing Node.js applications. After experimenting with various setups, I've settled on this minimal configuration that suits my needs.
 
 
-
 1. Clone [vim-plug](https://github.com/junegunn/vim-plug.git)
    
 ```sh
@@ -14,7 +13,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 2. Backup your current configuration (optional but recommended):
 
 ```sh
-cp ~/.vimrc ~/.vimrc_back
+mv ~/.vimrc ~/.vimrc_back
 ```
 
 3. Set up the new configuration:

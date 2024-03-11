@@ -13,7 +13,9 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
+Plug 'charlespascoe/vim-go-syntax'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
