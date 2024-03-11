@@ -11,11 +11,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
+
+" Javascript support
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Go support 
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'charlespascoe/vim-go-syntax'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
-Plug 'charlespascoe/vim-go-syntax'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
