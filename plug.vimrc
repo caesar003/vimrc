@@ -12,6 +12,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
 
+Plug 'scrooloose/nerdtree'
+
 " Javascript support
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'

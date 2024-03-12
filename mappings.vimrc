@@ -1,7 +1,8 @@
 let mapleader=" "
 
 " File Manager
-nnoremap <silent> <leader>e :Lexplore<cr>
+" nnoremap <silent> <leader>e :Lexplore<cr>
+nnoremap <silent> <leader>e :call ToggleNERDTree()<cr>
 
 " Quick write and exit
 nnoremap <leader>q :q<cr>
