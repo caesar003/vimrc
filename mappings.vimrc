@@ -19,10 +19,10 @@ nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <silent> ^ g^
 nnoremap <silent> 0 g0
 
-nnoremap <up> <NOP>
-nnoremap <down> <Nop>
-nnoremap <right> <Nop>
-nnoremap <left> <Nop>
+nnoremap <up> :echoerr "Uhm, we don't do that here" \| sleep 3 \| redraw \| echon ''<CR>
+nnoremap <down> :echoerr "Uhm, we don't do that here" \| sleep 3 \| redraw \| echon ''<CR>
+nnoremap <right> :echoerr "Uhm, we don't do that here" \| sleep 3 \| redraw \| echon ''<CR>
+nnoremap <left> :echoerr "Uhm, we don't do that here" \| sleep 3 \| redraw \| echon ''<CR>
 
 nnoremap <C-Up> :resize +5<CR>
 nnoremap <C-Down> :resize -5<CR>
