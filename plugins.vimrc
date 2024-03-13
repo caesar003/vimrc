@@ -57,6 +57,8 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
+
+" go support
 let g:go_highlight_parens = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_type_parameters = 'ctermfg=4 cterm=italic'
@@ -76,10 +78,11 @@ let g:go_fold_interface_blocks = 1
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['node_modules','\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=0
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize = 30
+let g:NERDTreeMinimalUI = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 " nnoremap <silent> <F2> :NERDTreeFind<CR>
 " nnoremap <silent> <F3> :NERDTreeToggle<CR>
