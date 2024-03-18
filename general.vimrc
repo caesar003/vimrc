@@ -1,4 +1,6 @@
 " Basic settings
+" set cursorcolumn
+" set cursorline
 set conceallevel=1             " Conceal text (e.g., for syntax highlighting)
 set number relativenumber      " Show line numbers and relative line numbers
 set encoding=utf-8             " Set the encoding for the file
@@ -36,23 +38,18 @@ set showtabline=1              " Always show the tabline, even if there's only o
 set hidden                     " Allow switching buffers with unsaved changes
 set notimeout
 
-let g:netrw_banner=0        " disable annoying banner
-let g:netrw_winsize=25
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_bufsettings = 'noma nu rnu'
-
 
 colorscheme 1989
 
-" Transparent background
 let g:disable_bg = 1
 
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
+
+hi Floaterm guibg=black
+hi FloatermBorder guibg=orange guifg=cyan
 
 if exists('+termguicolors') && &termguicolors
   hi Cursor guifg=#FFA500 guibg=#1a1a1a

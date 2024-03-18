@@ -1,3 +1,10 @@
+let g:netrw_banner=0           " disable annoying banner
+let g:netrw_winsize=25
+let g:netrw_liststyle=3        " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_bufsettings = 'noma nu rnu'
+
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
 
@@ -86,3 +93,22 @@ let g:NERDTreeMinimalUI = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 " nnoremap <silent> <F2> :NERDTreeFind<CR>
 " nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+
+" NERDTree Git Integration
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+
+
