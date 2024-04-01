@@ -93,6 +93,6 @@ vnoremap <silent> <leader>/ :Commentary<cr>
 
 
 " Language actions
-nnoremap <silent> <leader>lr :LspRename<cr>
-nnoremap <silent> K :LspHover<cr> 
-nnoremap <silent> gd :LspDefinition<cr>
+" nnoremap <silent> <leader>lr :LspRename<cr>
+" nnoremap <silent> K :LspHover<cr> 
+" nnoremap <silent> gd :LspDefinition<cr>

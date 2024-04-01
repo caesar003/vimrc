@@ -1,6 +1,6 @@
 " Basic settings
-" set cursorcolumn
-" set cursorline
+set cursorcolumn
+set cursorline
 set conceallevel=1             " Conceal text (e.g., for syntax highlighting)
 set number relativenumber      " Show line numbers and relative line numbers
 set encoding=utf-8             " Set the encoding for the file
@@ -39,7 +39,9 @@ set hidden                     " Allow switching buffers with unsaved changes
 set notimeout
 
 
-colorscheme 1989
+ " colorscheme 1989
+" colorscheme Atelier_LakesideDark 
+colorscheme rosepine
 
 let g:disable_bg = 1
 
