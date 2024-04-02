@@ -41,7 +41,8 @@ set notimeout
 
  " colorscheme 1989
 " colorscheme Atelier_LakesideDark 
-colorscheme rosepine
+" colorscheme rosepine
+colorscheme gruvbox
 
 let g:disable_bg = 1
 
