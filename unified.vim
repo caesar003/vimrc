@@ -2,7 +2,6 @@ echom '>^.^<'
 set nocompatible
 syntax enable
 filetype plugin on
-
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,14 +20,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'psliwka/vim-smoothie'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
-
 set cursorcolumn
 set cursorline
 set conceallevel=1
@@ -90,8 +88,6 @@ endif
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
-
-
 
 let mapleader=' ' 
 nnoremap <silent> <leader>e :call ToggleNERDTree()<cr>
@@ -188,17 +184,17 @@ let g:gitgutter_override_sign_column_highlight = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 let g:lightline = {
       \ 'mode_map': {
-      \ 'n' : 'N',
-      \ 'i' : 'I',
-      \ 'R' : 'R',
-      \ 'v' : 'V',
-      \ 'V' : 'V-Line',
-      \ "\<C-v>": 'V-Block',
-      \ 'c' : 'C',
-      \ 's' : 'S',
-      \ 'S' : 'SL',
-      \ "\<C-s>": 'SB',
-      \ 't': 'T',
+      \ 'n' : '-- NORMAL --',
+      \ 'i' : '-- INSERT --',
+      \ 'R' : '-- REPLACE --',
+      \ 'v' : '-- VISUAL --',
+      \ 'V' : '-- VISUAL-LINE --',
+      \ "\<C-v>": '-- VISUAL-BLOCK --',
+      \ 'c' : '-- COMMAND --',
+      \ 's' : '-- SELECT --',
+      \ 'S' : '-- SELECT-LINE --',
+      \ "\<C-s>": '-- SELECT-BLOCK --',
+      \ 't': '-- TERMINAL --',
       \ },
       \ 'colorscheme': 'default',
       \ 'active': {
@@ -254,3 +250,36 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 let g:NERDTreeGitStatusUseNerdFonts = 1
+
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_browser = ''
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0,
+    \ 'toc': {}
+    \ }
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+let g:mkdp_page_title = '「${name}」'
+let g:mkdp_images_path = '/home/caesar/.markdown_images'
+let g:mkdp_filetypes = ['markdown']
+let g:mkdp_theme = 'dark'
+let g:mkdp_combine_preview = 0
+let g:mkdp_combine_preview_auto_refresh = 1

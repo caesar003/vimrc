@@ -16,7 +16,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'psliwka/vim-smoothie'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax'
 Plug 'jiangmiao/auto-pairs'
