@@ -34,6 +34,7 @@ set wildmode=list:longest,full
 set showtabline=1
 set hidden
 set notimeout
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 colorscheme gruvbox
 let g:disable_bg = 1
 hi Normal guibg=NONE ctermbg=NONE

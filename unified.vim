@@ -3,12 +3,11 @@ set nocompatible
 syntax enable
 filetype plugin on
 call plug#begin()
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'rose-pine/vim'
-Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
@@ -16,7 +15,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'psliwka/vim-smoothie'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
@@ -26,6 +24,7 @@ Plug 'charlespascoe/vim-go-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 set cursorcolumn
 set cursorline
@@ -63,6 +62,7 @@ set wildmode=list:longest,full
 set showtabline=1
 set hidden
 set notimeout
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 colorscheme gruvbox
 let g:disable_bg = 1
 hi Normal guibg=NONE ctermbg=NONE
@@ -167,6 +167,14 @@ function! ToggleNERDTree()
   endif
 endfunction
 
+function! GetFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! GetFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
 let g:highlightedyank_highlight_duration = 300
@@ -184,30 +192,34 @@ let g:gitgutter_override_sign_column_highlight = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 let g:lightline = {
       \ 'mode_map': {
-      \ 'n' : '-- NORMAL --',
-      \ 'i' : '-- INSERT --',
-      \ 'R' : '-- REPLACE --',
-      \ 'v' : '-- VISUAL --',
-      \ 'V' : '-- VISUAL-LINE --',
-      \ "\<C-v>": '-- VISUAL-BLOCK --',
-      \ 'c' : '-- COMMAND --',
-      \ 's' : '-- SELECT --',
-      \ 'S' : '-- SELECT-LINE --',
-      \ "\<C-s>": '-- SELECT-BLOCK --',
-      \ 't': '-- TERMINAL --',
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'v' : 'V',
+      \ 'V' : 'V-LINE',
+      \ "\<C-v>": 'V-BLOCK',
+      \ 'c' : 'C',
+      \ 's' : 'S',
+      \ 'S' : 'S-LINE',
+      \ "\<C-s>": 'S-BLOCK',
+      \ 't': 'TERMINAL',
       \ },
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
+      \   'gitbranch': 'FugitiveHead',
+      \   'filetype': 'GetFiletype',
+      \ 'fileformat': 'GetFileFormat'
       \ },
       \ 'component': {
       \ 'lineinfo': '%3l:%-2v%<',
       \}
       \}
+
+
 highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
 highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
 highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
@@ -236,7 +248,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMinimalUI = 1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
+let g:NERDTreeWinPos = "right"
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -250,6 +262,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 let g:NERDTreeGitStatusUseNerdFonts = 1
+
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
