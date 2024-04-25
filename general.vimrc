@@ -1,3 +1,4 @@
+set path+=**
 set cursorcolumn
 set cursorline
 set conceallevel=1

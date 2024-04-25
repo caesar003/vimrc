@@ -66,3 +66,6 @@ nnoremap <leader>ss :SessionSave<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 vnoremap <silent> <leader>/ :Commentary<cr> 
 
+nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
+nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
+

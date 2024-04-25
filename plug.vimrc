@@ -20,4 +20,5 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()

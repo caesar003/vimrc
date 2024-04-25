@@ -2,8 +2,8 @@ echom '>^.^<'
 set nocompatible
 syntax enable
 filetype plugin on
-call plug#begin()
 
+call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -25,7 +25,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
+
+set path+=**
 set cursorcolumn
 set cursorline
 set conceallevel=1
@@ -156,6 +159,9 @@ nnoremap <leader>sc :SessionClose<cr>
 nnoremap <leader>ss :SessionSave<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 vnoremap <silent> <leader>/ :Commentary<cr> 
+
+nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
+nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
 
 function! ToggleNERDTree()
   if exists("t:NERDTreeIsOpen") && t:NERDTreeIsOpen
@@ -298,3 +304,4 @@ let g:mkdp_filetypes = ['markdown']
 let g:mkdp_theme = 'dark'
 let g:mkdp_combine_preview = 0
 let g:mkdp_combine_preview_auto_refresh = 1
+
