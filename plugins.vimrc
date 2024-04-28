@@ -71,7 +71,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinPos = "right"
+" let g:NERDTreeWinPos = "right"
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
