@@ -1,7 +1,8 @@
 echom '>^.^<'              
 set nocompatible
 syntax enable
-filetype plugin on
+filetype plugin indent on
+
 
 source $HOME/.vim/init/plug.vimrc
 source $HOME/.vim/init/general.vimrc

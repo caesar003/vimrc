@@ -83,7 +83,7 @@ Now, within Vim, you can navigate to function or variable definitions by placing
 
 ## Additional Consideration: Building Vim from Source for Enhanced Compatibility and Features
 
-When setting up your Vim environment, it's worth noting that there could be compatibility issues if you're using pre-built packages from package managers like sudo apt install vim. Certain plugins may require additional support or features that are not included in these pre-built packages.
+When setting up your Vim environment, it's worth noting that there could be compatibility issues if you're using pre-built packages from package managers like `sudo apt install vim`. Certain plugins may require additional support or features that are not included in these pre-built packages.
 
 Moreover, features such as clipboard integration are often unavailable in pre-built Vim packages. By building Vim from source, you can ensure compatibility with plugins that require extra support and enable additional features like clipboard integration.
 
@@ -126,7 +126,6 @@ Note: Change `--with-compiledby` to your own name or identifier.
 ### Build and install Vim:
 
 ```sh
-
 make VMRUNTIMEDIR=/usr/share/vim/vim9
 sudo make install
 ```

@@ -27,7 +27,7 @@ let g:lightline = {
       \ "\<C-s>": 'S-BLOCK',
       \ 't': 'TERMINAL',
       \ },
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'catppuccine_mocha',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -121,3 +121,7 @@ let g:mkdp_filetypes = ['markdown']
 let g:mkdp_theme = 'dark'
 let g:mkdp_combine_preview = 0
 let g:mkdp_combine_preview_auto_refresh = 1
+
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" autocmd FileType java JCEnable

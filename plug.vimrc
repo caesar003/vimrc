@@ -6,19 +6,38 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' } 
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'psliwka/vim-smoothie'
+
+" Javascript + typescript
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
+" Go
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
-Plug 'OmniSharp/omnisharp-vim'
+
+" C#
+Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
+
+" PHP
+Plug 'jwalton512/vim-blade'
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'vim-scripts/svg.vim'
+
+" Java-completion
+Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
+
 call plug#end()

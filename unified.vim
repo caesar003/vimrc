@@ -1,7 +1,8 @@
 echom '>^.^<'              
 set nocompatible
 syntax enable
-filetype plugin on
+filetype plugin indent on
+
 
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -11,21 +12,40 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' } 
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'psliwka/vim-smoothie'
+
+" Javascript + typescript
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
+" Go
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
-Plug 'OmniSharp/omnisharp-vim'
+
+" C#
+Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
+
+" PHP
+Plug 'jwalton512/vim-blade'
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'vim-scripts/svg.vim'
+
+" Java-completion
+Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
+
 call plug#end()
 
 set path+=**
@@ -45,7 +65,7 @@ set expandtab
 set linebreak
 set wrap
 set breakindent
-set breakindentopt=shift:2
+" set breakindentopt=shift:2
 set laststatus=2
 set hlsearch
 set incsearch
@@ -55,19 +75,36 @@ set smartindent
 set ruler
 set belloff=all
 set visualbell t_vb=
-set foldmethod=syntax
+set foldmethod=indent
 set foldcolumn=1
 set foldlevelstart=99
-set background=dark
 set noshowmode
 set wildmenu
 set wildmode=list:longest,full
 set showtabline=1
 set hidden
 set notimeout
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-colorscheme gruvbox
-let g:disable_bg = 1
+set background=dark
+set directory=~/.vim/swapfiles//
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
+
+
+colorscheme sorbet 
+" catppuccin latte | frappe | macchiato | mocha 
+" colorscheme catppuccin_mocha 
+" colorscheme catppuccin_latte 
+" colorscheme catppuccin_frappe 
+" colorscheme catppuccin_macchiato 
+
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+
+highlight Comment cterm=italic
+highlight String cterm=italic gui=italic
+highlight Function cterm=italic gui=italic
+highlight Keyword cterm=italic gui=italic
+
+let g:disable_bg=1
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
@@ -75,6 +112,8 @@ hi LineNr ctermbg=NONE guibg=NONE
 
 hi Floaterm guibg=black
 hi FloatermBorder guibg=orange guifg=cyan
+
+set termguicolors
 
 if exists('+termguicolors') && &termguicolors
   hi Cursor guifg=#FFA500 guibg=#1a1a1a
@@ -91,6 +130,12 @@ endif
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
+
+if has("termguicolors")
+  let &t_ZH="\e[3m"
+  let &t_ZR="\e[23m"
+endif
+
 
 let mapleader=' ' 
 nnoremap <silent> <leader>e :call ToggleNERDTree()<cr>
@@ -127,7 +172,9 @@ nnoremap <leader>bl :buffers<cr>
 nnoremap <leader>bh :sb<cr>
 nnoremap <leader>bv :vsp<cr>
 nnoremap <leader>ba :%bd\|e#\|bd#<cr>
-nnoremap <leader>c :bdelete<cr>
+nnoremap <silent> <leader>c :bdelete<cr>
+nnoremap <leader>bo :BufOnly<cr>
+nnoremap <leader>bO :BufOnly<space>
 nnoremap <leader>yy "+yy
 vnoremap <leader>y "+y
 nnoremap <silent> <leader>i :f<cr>
@@ -149,19 +196,21 @@ tnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <F7> :FloatermNew<CR>
 nnoremap <silent> <F8> :FloatermPrev<CR>
 nnoremap <silent> <F9> :FloatermNext<CR>
-nnoremap <silent> <F12> :FloatermToggle<CR>
+nnoremap <silent> <F6> :FloatermToggle<CR>
 tnoremap <silent> <F7> <C-\><C-n>:FloatermNew<CR>
 tnoremap <silent> <F8> <C-\><C-n>:FloatermPrev<CR>
 tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <F6> <C-\><C-n>:FloatermToggle<CR>
 nnoremap <leader>sr :SessionOpen<space>
 nnoremap <leader>sc :SessionClose<cr>
 nnoremap <leader>ss :SessionSave<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 vnoremap <silent> <leader>/ :Commentary<cr> 
 
-nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
-nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
+nnoremap <leader><leader> za
+
+" nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
+" nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
 
 function! ToggleNERDTree()
   if exists("t:NERDTreeIsOpen") && t:NERDTreeIsOpen
@@ -180,6 +229,8 @@ endfunction
 function! GetFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
+source $HOME/.vim/plugins/init.vim
 
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
@@ -210,7 +261,7 @@ let g:lightline = {
       \ "\<C-s>": 'S-BLOCK',
       \ 't': 'TERMINAL',
       \ },
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'catppuccine_mocha',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -254,7 +305,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinPos = "right"
+" let g:NERDTreeWinPos = "right"
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -305,3 +356,6 @@ let g:mkdp_theme = 'dark'
 let g:mkdp_combine_preview = 0
 let g:mkdp_combine_preview_auto_refresh = 1
 
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" autocmd FileType java JCEnable

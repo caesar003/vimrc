@@ -33,7 +33,9 @@ nnoremap <leader>bl :buffers<cr>
 nnoremap <leader>bh :sb<cr>
 nnoremap <leader>bv :vsp<cr>
 nnoremap <leader>ba :%bd\|e#\|bd#<cr>
-nnoremap <leader>c :bdelete<cr>
+nnoremap <silent> <leader>c :bdelete<cr>
+nnoremap <leader>bo :BufOnly<cr>
+nnoremap <leader>bO :BufOnly<space>
 nnoremap <leader>yy "+yy
 vnoremap <leader>y "+y
 nnoremap <silent> <leader>i :f<cr>
@@ -55,17 +57,20 @@ tnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <F7> :FloatermNew<CR>
 nnoremap <silent> <F8> :FloatermPrev<CR>
 nnoremap <silent> <F9> :FloatermNext<CR>
-nnoremap <silent> <F12> :FloatermToggle<CR>
+nnoremap <silent> <F6> :FloatermToggle<CR>
 tnoremap <silent> <F7> <C-\><C-n>:FloatermNew<CR>
 tnoremap <silent> <F8> <C-\><C-n>:FloatermPrev<CR>
 tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <F6> <C-\><C-n>:FloatermToggle<CR>
 nnoremap <leader>sr :SessionOpen<space>
 nnoremap <leader>sc :SessionClose<cr>
 nnoremap <leader>ss :SessionSave<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 vnoremap <silent> <leader>/ :Commentary<cr> 
 
-nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
-nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
+
+nnoremap <leader><leader> za
+
+" nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
+" nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
 
