@@ -15,7 +15,6 @@ set expandtab
 set linebreak
 set wrap
 set breakindent
-" set breakindentopt=shift:2
 set laststatus=2
 set hlsearch
 set incsearch
@@ -36,15 +35,8 @@ set hidden
 set notimeout
 set background=dark
 set directory=~/.vim/swapfiles//
-" set guifont=DroidSansMono\ Nerd\ Font\ 11
-
 
 colorscheme sorbet 
-" catppuccin latte | frappe | macchiato | mocha 
-" colorscheme catppuccin_mocha 
-" colorscheme catppuccin_latte 
-" colorscheme catppuccin_frappe 
-" colorscheme catppuccin_macchiato 
 
 set t_ZH=^[[3m
 set t_ZR=^[[23m

@@ -32,12 +32,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 
 " PHP
-Plug 'jwalton512/vim-blade'
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-php-cs-fixer'
+Plug 'jwalton512/vim-blade', { 'for': 'php' }
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
 Plug 'vim-scripts/svg.vim'
 
 " Java-completion
 Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
+
 
 call plug#end()

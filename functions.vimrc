@@ -16,4 +16,4 @@ function! GetFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
-source $HOME/.vim/plugins/init.vim
+source $HOME/.vim/init/plugins/init.vim

@@ -71,6 +71,3 @@ vnoremap <silent> <leader>/ :Commentary<cr>
 
 nnoremap <leader><leader> za
 
-" nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
-" nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
-

@@ -2,8 +2,6 @@ echom '>^.^<'
 set nocompatible
 syntax enable
 filetype plugin indent on
-
-
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -38,16 +36,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 
 " PHP
-Plug 'jwalton512/vim-blade'
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-php-cs-fixer'
+Plug 'jwalton512/vim-blade', { 'for': 'php' }
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
 Plug 'vim-scripts/svg.vim'
 
 " Java-completion
 Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
 
-call plug#end()
 
+call plug#end()
 set path+=**
 set cursorcolumn
 set cursorline
@@ -65,7 +63,6 @@ set expandtab
 set linebreak
 set wrap
 set breakindent
-" set breakindentopt=shift:2
 set laststatus=2
 set hlsearch
 set incsearch
@@ -86,15 +83,8 @@ set hidden
 set notimeout
 set background=dark
 set directory=~/.vim/swapfiles//
-" set guifont=DroidSansMono\ Nerd\ Font\ 11
-
 
 colorscheme sorbet 
-" catppuccin latte | frappe | macchiato | mocha 
-" colorscheme catppuccin_mocha 
-" colorscheme catppuccin_latte 
-" colorscheme catppuccin_frappe 
-" colorscheme catppuccin_macchiato 
 
 set t_ZH=^[[3m
 set t_ZR=^[[23m
@@ -207,10 +197,8 @@ nnoremap <leader>ss :SessionSave<cr>
 nnoremap <silent> <leader>/ :Commentary<cr>
 vnoremap <silent> <leader>/ :Commentary<cr> 
 
-nnoremap <leader><leader> za
 
-" nnoremap ,html :-1read $HOME/.vim/skeleton/html.txt<CR>
-" nnoremap ,rfc :-1read $HOME/.vim/skeleton/rfc.txt<CR>
+nnoremap <leader><leader> za
 
 function! ToggleNERDTree()
   if exists("t:NERDTreeIsOpen") && t:NERDTreeIsOpen
@@ -230,8 +218,7 @@ function! GetFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
-source $HOME/.vim/plugins/init.vim
-
+source $HOME/.vim/init/plugins/init.vim
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
 let g:highlightedyank_highlight_duration = 300
@@ -305,7 +292,6 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMinimalUI = 1
-" let g:NERDTreeWinPos = "right"
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -358,4 +344,3 @@ let g:mkdp_combine_preview_auto_refresh = 1
 
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-" autocmd FileType java JCEnable
