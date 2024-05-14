@@ -162,7 +162,7 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/maste
 
 ### Additional Considerations
 1. Path Separators:  
-Ensure to use backslashes (\) for file paths in Windows. However, Vim usually understands both slashes, so you might not need to change paths in your .vimrc.
+Ensure to use backslashes `(\)` for file paths in Windows. However, Vim usually understands both slashes, so you might not need to change paths in your .vimrc.
 
 2. Building Vim from Source:  
 Building Vim from source on Windows can be more complex compared to Debian-based systems. Consider using pre-built binaries or Windows Subsystem for Linux (WSL) to run a Linux environment within Windows. WSL allows you to run Linux distributions directly on Windows, which can simplify the setup process and resolve compatibility issues.
