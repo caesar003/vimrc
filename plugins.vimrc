@@ -7,8 +7,21 @@ let g:gitgutter_sign_removed = ''
 let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_removed_above_and_below = ''
 let g:gitgutter_sign_modified_removed = ''
+
+" Cursor shape and blink
+
+" Insert Mode - blinking bar 
 let &t_SI = "\e[5 q"
+
+" Normal Mode - blinking block
 let &t_EI = "\e[1 q"
+
+" Here are other available options as cheatsheet
+" 2 = Solid block
+" 3 = blinking underscore
+" 4 = solid underscore
+" 6 = vertical line
+
 let g:javascript_enable_domhtmlcss = 1
 let g:javascript_plugin_jsdoc = 1
 let g:gitgutter_override_sign_column_highlight = 0
@@ -46,10 +59,37 @@ let g:lightline = {
 highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
 highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
 highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
+
+
+" Set the statusline with various components
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+" Breakdown:
+" %F - Full path to the file
+" %m - Modified flag (shows [+] if the file is modified)
+" %r - Read-only flag (shows [RO] if the file is read-only)
+" %h - Help file flag (shows [help] if the file is a help file)
+" %w - Preview flag (shows [preview] if the file is a preview window)
+" %= - Separates left-aligned and right-aligned parts of the statusline
+" %{&ff} - Shows the file format (e.g., unix, dos, mac)
+" %Y - File type (e.g., vim, python, etc.)
+" (line %l/%L, col %c) - Shows the current line, total lines, and current column
+
+" Sample output:
+" /path/to/file.txt[+] [RO] [help] [preview]  unix/vim (line 10/200, col 5)
+" Explanation of the sample output:
+" - /path/to/file.txt: full path to the current file
+" - [+]: file has been modified
+" - [RO]: file is read-only
+" - [help]: current buffer is a help file
+" - [preview]: current buffer is in preview mode
+" - unix/vim: file format is 'unix' and file type is 'vim'
+" - (line 10/200, col 5): current line is 10 out of 200, current column is 5
+
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
+
 let g:go_highlight_parens = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_type_parameters = 'ctermfg=4 cterm=italic'
