@@ -141,7 +141,7 @@ Alternatively, you can use a package manager like Chocolatey:
 choco install vim
 ```
 
-Install `jj`:  
+Install `ctags`:  
 ctags is available for Windows and can be installed using Chocolatey:
 
 ```sh
