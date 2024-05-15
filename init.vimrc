@@ -52,6 +52,7 @@ Plug 'vim-scripts/svg.vim'
 Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
 
 call plug#end()
+
 set path+=**
 set cursorcolumn
 set cursorline
@@ -89,7 +90,6 @@ set hidden
 set notimeout
 set background=dark
 set directory=~/.vim/swapfiles//
-" set term=builtin_ansi
 
 colorscheme sorbet 
 
@@ -133,6 +133,7 @@ if has("termguicolors")
   let &t_ZH="\e[3m"
   let &t_ZR="\e[23m"
 endif
+
 
 
 let mapleader=' ' 
@@ -240,6 +241,7 @@ nnoremap <leader><leader> za
 
 " Toggle Wrap
 nnoremap <silent> <leader>uw :set wrap!<cr>
+
 function! ToggleNERDTree()
   if exists("t:NERDTreeIsOpen") && t:NERDTreeIsOpen
     NERDTreeClose
@@ -256,6 +258,7 @@ endfunction
 
 
 source $HOME/.vim/init/plugins/init.vim
+
 let javaScript_fold=1
 let g:tmux_navigator_no_mappings = 1
 let g:highlightedyank_highlight_duration = 300
