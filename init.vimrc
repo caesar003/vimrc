@@ -1,8 +1,12 @@
+" Show smiling cat at startup
 echom '>^.^<'              
 set nocompatible
 syntax enable
 filetype plugin indent on
 
+" =============================================================================
+" VIM PLUGIN MANANAGER
+" =============================================================================
 call plug#begin()
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -11,87 +15,95 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-
 Plug 'vim-scripts/sessionman.vim'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'psliwka/vim-smoothie'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" Javascript + typescript
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-
 Plug 'iamcco/markdown-preview.nvim', {  'for': 'markdown', 'do': 'cd app && npx --yes yarn install' }
-
-" Go
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'charlespascoe/vim-go-syntax', { 'for': 'go' }
-
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'machakann/vim-highlightedyank'
-
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
-
-" C#
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
-
-" PHP
 Plug 'jwalton512/vim-blade', { 'for': 'php' }
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
-
-" SVG
 Plug 'vim-scripts/svg.vim'
-
-" Java-completion
 Plug 'vim-scripts/vim-javacomplete2', { 'for': 'java' } 
 
 call plug#end()
 
-set path+=**
-set cursorcolumn
-set cursorline
-set conceallevel=1
-set number relativenumber
+" =============================================================================
+" GENERAL SETTINGS
+" =============================================================================
+
+" Basic Settings
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set ttyfast
 set backspace=indent,eol,start
+set number relativenumber
+set cursorcolumn
+set cursorline
+set conceallevel=1
+set path+=**
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
+set directory=~/.vim/swapfiles//
+set hidden
+set notimeout
+set ruler
+set noshowmode
+set wildmenu
+set wildmode=list:longest,full
+
+" Tab and Indentation Settings
 set tabstop=2
 set softtabstop=0
 set shiftwidth=2
 set expandtab
-set linebreak
-set wrap
-set breakindent
-set laststatus=2
+set smartindent
+set autoindent
+
+" Search Settings
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set smartindent
-set ruler
-set belloff=all
-set visualbell t_vb=
+
+" Visual Settings
+set laststatus=2
+set background=dark
+set linebreak
+set wrap
+set breakindent
 set foldmethod=indent
 set foldcolumn=1
 set foldlevelstart=99
-set noshowmode
-set wildmenu
-set wildmode=list:longest,full
 set showtabline=1
-set hidden
-set notimeout
-set background=dark
-set directory=~/.vim/swapfiles//
-
+set termguicolors
 colorscheme sorbet 
+
+" Disable Bell
+set belloff=all
+set visualbell t_vb=
+
+" Cursor shape and blink
+" Insert Mode - blinking bar 
+let &t_SI = "\e[5 q"
+
+" Normal Mode - blinking block
+let &t_EI = "\e[1 q"
+
+" Here are other available options as cheatsheet
+" 2 = Solid block | 3 = blinking underscore | 4 = solid underscore | 6 = vertical line
+
 
 " Italic font 
 set t_ZH=^[[3m
@@ -102,16 +114,16 @@ highlight String cterm=italic gui=italic
 highlight Function cterm=italic gui=italic
 highlight Keyword cterm=italic gui=italic
 
+" Transparency Settings
 let g:disable_bg=1
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 
-hi Floaterm guibg=black
-hi FloatermBorder guibg=orange guifg=cyan
+hi Floaterm guibg=NONE
+hi FloatermBorder guibg=NONE guifg=white
 
-set termguicolors
 
 if exists('+termguicolors') && &termguicolors
   hi Cursor guifg=#FFA500 guibg=#1a1a1a
@@ -135,6 +147,9 @@ if has("termguicolors")
 endif
 
 
+" =============================================================================
+" Mappings
+" =============================================================================
 
 let mapleader=' ' 
 
@@ -160,10 +175,11 @@ nnoremap <down> <NOP>
 nnoremap <right> <NOP>
 nnoremap <left> <NOP>
 
-nnoremap <C-Up> :resize +5<CR>
-nnoremap <C-Down> :resize -5<CR>
-nnoremap <C-Right> :vertical resize +5<CR>
-nnoremap <C-Left> :vertical resize -5<CR>
+" Resize split window
+nnoremap <C-S-J> :resize +5<CR>
+nnoremap <C-S-K> :resize -5<CR>
+nnoremap <C-S-L> :vertical resize +5<CR>
+nnoremap <C-S-H> :vertical resize -5<CR>
 
 nnoremap <silent> <leader>t :below terminal<cr>
 nnoremap <silent> <leader>T :e ~/.config/tmux/tmux.conf<cr>
@@ -211,6 +227,7 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
 tnoremap <silent> <c-h> <c-w>h
 tnoremap <silent> <c-j> <c-w>j
 tnoremap <silent> <c-k> <c-w>k
@@ -256,39 +273,27 @@ function AirlineInit()
   let g:airline_section_c = airline#section#create(['%t'])
 endfunction
 
-
 source $HOME/.vim/init/plugins/init.vim
 
-let javaScript_fold=1
+" =============================================================================
+" Plugin Configurations
+" =============================================================================
+
+" Floaterm Configuration
+let g:floaterm_height=0.8
+let g:floaterm_width=0.8
+let g:floaterm_title=' Floaterm: ($1|$2) '
+let g:floaterm_borderchars='─│─│╭╮╯╰'
+
 let g:tmux_navigator_no_mappings = 1
 let g:highlightedyank_highlight_duration = 300
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_removed_first_line = ''
-let g:gitgutter_sign_removed_above_and_below = ''
-let g:gitgutter_sign_modified_removed = ''
 
-" Cursor shape and blink
-" Insert Mode - blinking bar 
-let &t_SI = "\e[5 q"
-
-" Normal Mode - blinking block
-let &t_EI = "\e[1 q"
-
-" Here are other available options as cheatsheet
-" 2 = Solid block
-" 3 = blinking underscore
-" 4 = solid underscore
-" 6 = vertical line
-
+let javaScript_fold=1
 let g:javascript_enable_domhtmlcss = 1
 let g:javascript_plugin_jsdoc = 1
-let g:gitgutter_override_sign_column_highlight = 0
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 
-autocmd VimEnter * call AirlineInit()
-" Vim airline
+
+" VIM AIRLINE
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='term'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -310,7 +315,7 @@ let g:airline_mode_map = {
       \ ''     : 'S',
       \ 't'      : 'T',
       \ 'v'      : 'V',
-      \ 'V'      : 'V',
+      \ 'V'      : 'V-Line',
       \ ''     : 'V',
       \ }
 
@@ -318,6 +323,7 @@ highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
 highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
 highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
 
+" Go Configuration
 let g:go_highlight_parens = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_type_parameters = 'ctermfg=4 cterm=italic'
@@ -332,6 +338,17 @@ let g:go_fold_function_blocks = 1
 let g:go_fold_struct_blocks = 1
 let g:go_fold_interface_blocks = 1
 
+let g:gitgutter_async = 1
+let g:gitgutter_sign_added = '✚'        " Indicates a new addition
+let g:gitgutter_sign_modified = '∗'     " Indicates a modification
+let g:gitgutter_sign_removed = '✖'      " Indicates a removal
+let g:gitgutter_sign_removed_first_line = '➤'  " Indicates removal from the first line
+let g:gitgutter_sign_removed_above_and_below = '⬍' " Indicates removal above and below
+let g:gitgutter_sign_modified_removed = '≠'    " Indicates a modified removal
+let g:gitgutter_override_sign_column_highlight = 0
+
+" NERDTree
+let g:NERDTreeWinPos = 'right'
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['node_modules', 'build', '\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -340,6 +357,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Modified'  :'✹',
       \ 'Staged'    :'✚',
@@ -352,10 +370,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Clean'     :'✔︎',
       \ 'Unknown'   :'?',
       \ }
-let g:NERDTreeGitStatusUseNerdFonts = 1
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
 
+" Markdown
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -390,4 +407,5 @@ let g:mkdp_theme = 'dark'
 let g:mkdp_combine_preview = 0
 let g:mkdp_combine_preview_auto_refresh = 1
 
+autocmd VimEnter * call AirlineInit()
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
