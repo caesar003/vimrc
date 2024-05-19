@@ -1,14 +1,23 @@
+"                                                          
+"                  _/                                      
+"     _/      _/      _/_/_/  _/_/    _/  _/_/    _/_/_/   
+"    _/      _/  _/  _/    _/    _/  _/_/      _/          
+"     _/  _/    _/  _/    _/    _/  _/        _/           
+"_/    _/      _/  _/    _/    _/  _/          _/_/_/      
+"
+
 " Show smiling cat at startup
-echom '>^.^<'              
+echom '>^.^<'
 set nocompatible
 syntax enable
 filetype plugin indent on
 
 " =============================================================================
-" VIM PLUGIN MANANAGER
+" VIM PLUGIN MANAGER
 " =============================================================================
-call plug#begin()
 
+call plug#begin()
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -30,6 +39,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
+
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 Plug 'jwalton512/vim-blade', { 'for': 'php' }
 Plug 'StanAngeloff/php.vim', { 'for': 'php' }
@@ -88,7 +98,7 @@ set foldcolumn=1
 set foldlevelstart=99
 set showtabline=1
 set termguicolors
-colorscheme sorbet 
+colorscheme sorbet
 
 " Disable Bell
 set belloff=all
@@ -123,7 +133,6 @@ hi LineNr ctermbg=NONE guibg=NONE
 
 hi Floaterm guibg=NONE
 hi FloatermBorder guibg=NONE guifg=white
-
 
 if exists('+termguicolors') && &termguicolors
   hi Cursor guifg=#FFA500 guibg=#1a1a1a
@@ -199,7 +208,7 @@ nnoremap <leader>bl :buffers<cr>
 nnoremap <leader>bh :sb<cr>
 nnoremap <leader>bv :vsp<cr>
 nnoremap <leader>ba :%bd\|e#\|bd#<cr>
-nnoremap <silent> <leader>c :bdelete<cr>
+nnoremap <silent> <leader>c :call HandleBufferClose()<CR>
 
 " Close all other buffers
 nnoremap <leader>bo :BufOnly<cr>
@@ -259,18 +268,55 @@ nnoremap <leader><leader> za
 " Toggle Wrap
 nnoremap <silent> <leader>uw :set wrap!<cr>
 
+nnoremap <silent> <leader>h :Startify<cr>
+
 function! ToggleNERDTree()
+  " Check if there is only one window open and it's NERDTree
+  if tabpagewinnr(tabpagenr(), "$") == 1 && getbufvar(winbufnr(1), "&filetype") ==# 'nerdtree'
+    return
+  endif
+
   if exists("t:NERDTreeIsOpen") && t:NERDTreeIsOpen
     NERDTreeClose
     let t:NERDTreeIsOpen = 0
   else
-    NERDTreeFind
+    if empty(expand('%:p'))  " Check if the current buffer has a file name
+      NERDTree  " Open NERDTree normally
+    else
+      NERDTreeFind  " Open NERDTree and find the current file
+    endif
     let t:NERDTreeIsOpen = 1
   endif
 endfunction
 
 function AirlineInit()
   let g:airline_section_c = airline#section#create(['%t'])
+endfunction
+
+function! HandleBufferClose()
+  " Check if the buffer has unsaved changes
+  if &modified
+    " Prompt the user
+    echo 'Current buffer has unsaved changes. Save? [y]es/[n]o/[C]ancel: '
+    let l:response = nr2char(getchar())
+
+    " Handle the user's response
+    if l:response == 'y' || l:response == 'Y'
+      " Save the buffer and then delete it
+      write
+      bdelete
+    elseif l:response == 'n' || l:response == 'N'
+      " Discard changes and delete the buffer
+      set nomodified
+      bdelete!
+    else
+      " Cancel the action
+      " echo 'Buffer close canceled.'
+    endif
+  else
+    " No unsaved changes, just delete the buffer
+    bdelete
+  endif
 endfunction
 
 source $HOME/.vim/init/plugins/init.vim
@@ -285,13 +331,13 @@ let g:floaterm_width=0.8
 let g:floaterm_title=' Floaterm: ($1|$2) '
 let g:floaterm_borderchars='─│─│╭╮╯╰'
 
+" VIM + TMUX
 let g:tmux_navigator_no_mappings = 1
 let g:highlightedyank_highlight_duration = 300
 
 let javaScript_fold=1
 let g:javascript_enable_domhtmlcss = 1
 let g:javascript_plugin_jsdoc = 1
-
 
 " VIM AIRLINE
 let g:airline#extensions#tabline#enabled = 1
@@ -316,10 +362,11 @@ let g:airline_mode_map = {
       \ 't'      : 'T',
       \ 'v'      : 'V',
       \ 'V'      : 'V-Line',
-      \ ''     : 'V',
+      \ ''     : 'V-Block',
       \ }
 
-highlight GitGutterAdd    guifg=#b5bd68 guibg=NONE  ctermfg=107 ctermbg=NONE
+" Set the highlight colors for GitGutter signs
+highlight GitGutterAdd    guifg=#8bbd68 guibg=NONE  ctermfg=107 ctermbg=NONE
 highlight GitGutterChange guifg=#81a2be guibg=NONE  ctermfg=109 ctermbg=NONE
 highlight GitGutterDelete guifg=#cc6666 guibg=NONE  ctermfg=167 ctermbg=NONE
 
@@ -338,13 +385,15 @@ let g:go_fold_function_blocks = 1
 let g:go_fold_struct_blocks = 1
 let g:go_fold_interface_blocks = 1
 
+" GitGutter
 let g:gitgutter_async = 1
-let g:gitgutter_sign_added = '✚'        " Indicates a new addition
-let g:gitgutter_sign_modified = '∗'     " Indicates a modification
-let g:gitgutter_sign_removed = '✖'      " Indicates a removal
-let g:gitgutter_sign_removed_first_line = '➤'  " Indicates removal from the first line
-let g:gitgutter_sign_removed_above_and_below = '⬍' " Indicates removal above and below
-let g:gitgutter_sign_modified_removed = '≠'    " Indicates a modified removal
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '✗'
+let g:gitgutter_sign_removed_first_line = '➜'
+let g:gitgutter_sign_removed_above_and_below = '⬍'
+let g:gitgutter_sign_modified_removed = '≠'
+
 let g:gitgutter_override_sign_column_highlight = 0
 
 " NERDTree
@@ -371,6 +420,39 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Unknown'   :'?',
       \ }
 
+
+" Startify
+let g:ascii = [
+      \'                            oooo$$$$$$$$$$$$oooo                              ',
+      \'                        oo$$$$$$$$$$$$$$$$$$$$$$$$o                           ',
+      \'                     oo$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o         o$   $$ o$     ',
+      \'     o $ oo        o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o       $$ $$ $$o$    ',
+      \'  oo $ $ "$      o$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$o       $$$o$$o$     ',
+      \'  "$$$$$$o$     o$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$o    $$$$$$$$      ',
+      \'    $$$$$$$    $$$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$$$$$$$$$$$$$$      ',
+      \'    $$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$$$$$$  """$$$        ',
+      \'     "$$$""""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$       ',
+      \'      $$$   o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$o     ',
+      \'     o$$"   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$       $$$o    ',
+      \'     $$$    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" "$$$$$$ooooo$$$$o  ',
+      \'    o$$$oooo$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   o$$$$$$$$$$$$$$$$$ ',
+      \'    $$$$$$$$"$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$""""""""       ',
+      \'   """"       $$$$    "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"      o$$$                ',
+      \'              "$$$o     """$$$$$$$$$$$$$$$$$$"$$"         $$$                 ',
+      \'                $$$o          "$$""$$$$$$""""           o$$$                  ',
+      \'                 $$$$o                                o$$$"                   ',
+      \'                  "$$$$o      o$$$$$$o"$$$$o        o$$$$                     ',
+      \'                    "$$$$$oo     ""$$$$o$$$$$o   o$$$$""                      ',
+      \'                       ""$$$$$oooo  "$$$o$$$$$$$$$"""                         ',
+      \'                          ""$$$$$$$oo $$$$$$$$$$                              ',
+      \'                                  """"$$$$$$$$$$$                             ',
+      \'                                      $$$$$$$$$$$$                            ',
+      \'                                       $$$$$$$$$$"                            ',
+      \'                                        "$$$""""                              ',
+      \]
+
+let g:startify_custom_header = g:ascii + startify#fortune#boxed()
+let g:startify_bookmarks = [{'y': '~/phb'}]
 
 " Markdown
 let g:mkdp_auto_start = 0
