@@ -9,7 +9,7 @@
 " Show smiling cat at startup
 echom '>^.^<'
 set nocompatible
-syntax enable
+syntax on
 filetype plugin indent on
 
 " =============================================================================
@@ -24,7 +24,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/sessionman.vim'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'psliwka/vim-smoothie'
@@ -39,6 +38,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
+Plug 'alvan/vim-closetag'
 
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 Plug 'jwalton512/vim-blade', { 'for': 'php' }
@@ -89,7 +89,7 @@ set smartcase
 
 " Visual Settings
 set laststatus=2
-set background=dark
+set background=dark 
 set linebreak
 set wrap
 set breakindent
@@ -99,6 +99,7 @@ set foldlevelstart=99
 set showtabline=1
 set termguicolors
 colorscheme sorbet
+
 
 " Disable Bell
 set belloff=all
@@ -254,9 +255,10 @@ tnoremap <silent> <F8> <C-\><C-n>:FloatermPrev<CR>
 tnoremap <silent> <F9> <C-\><C-n>:FloatermNext<CR>
 
 " Session Management
-nnoremap <leader>sr :SessionOpen<space>
-nnoremap <leader>sc :SessionClose<cr>
-nnoremap <leader>ss :SessionSave<cr>
+nnoremap <leader>sr :SLoad<space>
+nnoremap <leader>sc :SClose<cr>
+nnoremap <leader>ss :SSave<cr>
+nnoremap <leader>sd :SDelete<cr>
 
 " Comment
 nnoremap <silent> <leader>/ :Commentary<cr>
@@ -268,7 +270,26 @@ nnoremap <leader><leader> za
 " Toggle Wrap
 nnoremap <silent> <leader>uw :set wrap!<cr>
 
-nnoremap <silent> <leader>h :Startify<cr>
+" nnoremap <silent> <leader>h :redraw | :Startify<cr>
+nnoremap <silent> <leader>h :execute 'Startify'<cr>
+
+
+nmap <leader>bb1 <Plug>AirlineSelectTab1
+nmap <leader>bb2 <Plug>AirlineSelectTab2
+nmap <leader>bb3 <Plug>AirlineSelectTab3
+nmap <leader>bb4 <Plug>AirlineSelectTab4
+nmap <leader>bb5 <Plug>AirlineSelectTab5
+nmap <leader>bb6 <Plug>AirlineSelectTab6
+nmap <leader>bb7 <Plug>AirlineSelectTab7
+nmap <leader>bb8 <Plug>AirlineSelectTab8
+nmap <leader>bb9 <Plug>AirlineSelectTab9
+nmap <leader>bb0 <Plug>AirlineSelectTab0
+
+nnoremap <silent> <leader>lf :FormatJS<cr>
+
+" =============================================================================
+" Functions
+" =============================================================================
 
 function! ToggleNERDTree()
   " Check if there is only one window open and it's NERDTree
@@ -318,6 +339,9 @@ function! HandleBufferClose()
     bdelete
   endif
 endfunction
+
+command! FormatJSON %!python3 -m json.tool
+command! FormatJS %!prettier --stdin-filepath % 2>/dev/null
 
 source $HOME/.vim/init/plugins/init.vim
 
@@ -420,39 +444,30 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
       \ 'Unknown'   :'?',
       \ }
 
+let NERDTreeHijackNetrw = 1
 
 " Startify
 let g:ascii = [
-      \'                            oooo$$$$$$$$$$$$oooo                              ',
-      \'                        oo$$$$$$$$$$$$$$$$$$$$$$$$o                           ',
-      \'                     oo$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o         o$   $$ o$     ',
-      \'     o $ oo        o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o       $$ $$ $$o$    ',
-      \'  oo $ $ "$      o$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$o       $$$o$$o$     ',
-      \'  "$$$$$$o$     o$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$o    $$$$$$$$      ',
-      \'    $$$$$$$    $$$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$$$$$$$$$$$$$$      ',
-      \'    $$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$$$$$$  """$$$        ',
-      \'     "$$$""""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$       ',
-      \'      $$$   o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$o     ',
-      \'     o$$"   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$       $$$o    ',
-      \'     $$$    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" "$$$$$$ooooo$$$$o  ',
-      \'    o$$$oooo$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   o$$$$$$$$$$$$$$$$$ ',
-      \'    $$$$$$$$"$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$""""""""       ',
-      \'   """"       $$$$    "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"      o$$$                ',
-      \'              "$$$o     """$$$$$$$$$$$$$$$$$$"$$"         $$$                 ',
-      \'                $$$o          "$$""$$$$$$""""           o$$$                  ',
-      \'                 $$$$o                                o$$$"                   ',
-      \'                  "$$$$o      o$$$$$$o"$$$$o        o$$$$                     ',
-      \'                    "$$$$$oo     ""$$$$o$$$$$o   o$$$$""                      ',
-      \'                       ""$$$$$oooo  "$$$o$$$$$$$$$"""                         ',
-      \'                          ""$$$$$$$oo $$$$$$$$$$                              ',
-      \'                                  """"$$$$$$$$$$$                             ',
-      \'                                      $$$$$$$$$$$$                            ',
-      \'                                       $$$$$$$$$$"                            ',
-      \'                                        "$$$""""                              ',
+      \ '                     __',
+      \ '             .--.--.|__|.--------.',
+      \ '             |  |  ||  ||        |',
+      \ '              \___/ |__||__|__|__|',
+      \ ''
       \]
 
 let g:startify_custom_header = g:ascii + startify#fortune#boxed()
 let g:startify_bookmarks = [{'y': '~/phb'}]
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_session_persistence = 0
+let g:startify_files_number = 5
+
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'files',     'header': ['   Recent Files']   },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+
 
 " Markdown
 let g:mkdp_auto_start = 0
@@ -489,5 +504,15 @@ let g:mkdp_theme = 'dark'
 let g:mkdp_combine_preview = 0
 let g:mkdp_combine_preview_auto_refresh = 1
 
+" Vim CloseTags
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx,*.ts,*.tsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascriptreact,typescriptreact'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
 autocmd VimEnter * call AirlineInit()
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
