@@ -6,7 +6,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'liuchengxu/vim-which-key' 
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'psliwka/vim-smoothie'
@@ -22,6 +21,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'voldikss/vim-floaterm'
 Plug 'ryanoasis/vim-devicons'
 Plug 'alvan/vim-closetag'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 Plug 'OmniSharp/omnisharp-vim', { 'for' : 'cs' }
 Plug 'jwalton512/vim-blade', { 'for': 'php' }

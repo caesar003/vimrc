@@ -2,6 +2,7 @@
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='term'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 let g:airline_mode_map = {
       \ '__'     : '-',
       \ 'c'      : 'C',
@@ -22,5 +23,3 @@ let g:airline_mode_map = {
       \ 'V'      : 'V-Line',
       \ ''     : 'V-Block',
       \ }
-
-

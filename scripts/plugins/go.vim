@@ -1,4 +1,4 @@
-" GO
+" Go Configuration
 let g:go_highlight_parens = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_type_parameters = 'ctermfg=4 cterm=italic'

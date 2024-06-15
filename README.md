@@ -145,7 +145,7 @@ Install `ctags`:
 ctags is available for Windows and can be installed using Chocolatey:
 
 ```sh
-choco install vim
+choco install ctags
 ```
 
 ### Configuration

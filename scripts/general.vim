@@ -1,44 +1,47 @@
-set path+=**
-set cursorcolumn
-set cursorline
-set conceallevel=1
-set number relativenumber
+set autoread
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set ttyfast
 set backspace=indent,eol,start
+set number relativenumber
+set cursorcolumn
+set cursorline
+set conceallevel=1
+set path+=**
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
+set directory=~/.vim/swapfiles//
+set hidden
+set notimeout
+set ruler
+set noshowmode
+set wildmenu
+set wildmode=list:longest,full
 set tabstop=2
 set softtabstop=0
 set shiftwidth=2
 set expandtab
-set linebreak
-set wrap
-set breakindent
-set laststatus=2
+set smartindent
+set autoindent
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set smartindent
-set ruler
-set belloff=all
-set visualbell t_vb=
+set laststatus=2
+set background=dark 
+set linebreak
+set wrap
+set breakindent
 set foldmethod=indent
 set foldcolumn=1
 set foldlevelstart=99
-set noshowmode
-set wildmenu
-set wildmode=list:longest,full
 set showtabline=1
-set hidden
-set notimeout
-set background=dark
-set directory=~/.vim/swapfiles//
-
-colorscheme sorbet 
-
-" Italic font 
+set termguicolors
+colorscheme sorbet
+set belloff=all
+set visualbell t_vb=
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[1 q"
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 
@@ -46,7 +49,6 @@ highlight Comment cterm=italic
 highlight String cterm=italic gui=italic
 highlight Function cterm=italic gui=italic
 highlight Keyword cterm=italic gui=italic
-
 let g:disable_bg=1
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
@@ -54,9 +56,7 @@ hi SignColumn ctermbg=NONE guibg=NONE
 hi LineNr ctermbg=NONE guibg=NONE
 
 hi Floaterm guibg=NONE
-hi FloatermBorder guibg=NONE guifg=black
-
-set termguicolors
+hi FloatermBorder guibg=NONE guifg=white
 
 if exists('+termguicolors') && &termguicolors
   hi Cursor guifg=#FFA500 guibg=#1a1a1a
@@ -78,5 +78,3 @@ if has("termguicolors")
   let &t_ZH="\e[3m"
   let &t_ZR="\e[23m"
 endif
-
-

@@ -1,4 +1,3 @@
-
 "                                                          
 "                  _/                                      
 "     _/      _/      _/_/_/  _/_/    _/  _/_/    _/_/_/   
@@ -7,15 +6,18 @@
 "_/    _/      _/  _/    _/    _/  _/          _/_/_/      
 "
 
-" Show smiling cat at startup
 echom '>^.^<'
+
 set nocompatible
 syntax on
 filetype plugin indent on
 
-source $HOME/.vim/init/scripts/plug.vimrc
-source $HOME/.vim/init/scripts/settings.vimrc
-source $HOME/.vim/init/scripts/mappings.vimrc
-source $HOME/.vim/init/scripts/functions/init.vimrc
-source $HOME/.vim/init/scripts/plugins/init.vimrc
+source $HOME/.vim/init/scripts/plug.vim
+source $HOME/.vim/init/scripts/general.vim
+source $HOME/.vim/init/scripts/mappings.vim
+source $HOME/.vim/init/scripts/functions/init.vim
+source $HOME/.vim/init/scripts/plugins/init.vim
+
+autocmd VimEnter * call AirlineInit()
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
