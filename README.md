@@ -30,7 +30,7 @@ mv ~/.vimrc ~/.vimrc_back
 ```sh
 mkdir -p ~/.vim/
 git clone https://github.com/caesar003/vimrc.git ~/.vim/init
-ln -s ~/.vim/init/init.vimrc ~/.vimrc
+ln -s ~/.vim/init/init.vim ~/.vim/vimrc
 ```
 
 ## Install the packages by running Vim
