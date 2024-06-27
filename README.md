@@ -30,7 +30,7 @@ mv ~/.vimrc ~/.vimrc_back
 ```sh
 mkdir -p ~/.vim/
 git clone https://github.com/caesar003/vimrc.git ~/.vim/init
-ln -s ~/.vim/init/init.vim ~/.vim/vimrc
+ln -s ~/.vim/init/init.vim ~/.vimrc
 ```
 
 ## Install the packages by running Vim
@@ -130,6 +130,17 @@ Note: Change `--with-compiledby` to your own name or identifier.
 make VMRUNTIMEDIR=/usr/share/vim/vim9
 sudo make install
 ```
+
+
+#### To quickly get set and running, I've written the script of those commands above, which you can fetch and run
+
+```sh
+curl -O https://raw.githubusercontent.com/caesar/vimrc/main/setup.sh
+chmod +x setup.sh
+./setup.sh
+```
+
+
 ## Windows Compatibility
 While this Vim configuration is optimized for Debian-based systems, it can also be adapted for use on Windows. Here are some considerations and tips for setting up Vim on Windows:
 
