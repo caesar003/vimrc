@@ -14,7 +14,7 @@ Welcome to my Vim configuration tailored for developing Node.js applications. Af
 
 ## Clone [vim-plug](https://github.com/junegunn/vim-plug.git)
 
-```sh
+```she
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -117,6 +117,7 @@ cd ~/vim-repo
             --enable-cscope \
             --enable-gtk2-check \
             --with-x \
+            --disable-gui \
             --with-compiledby="caesar003 - github.com/caesar003" \
             --prefix=$PREFIX
 ```
