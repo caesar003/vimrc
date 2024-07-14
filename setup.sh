@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# vim-setup.sh
+# Author:  caesar "https://github.com/caesar003"
+ 
+
 # Ensure the system is updated
 sudo apt update && sudo apt upgrade -y
 

@@ -14,7 +14,7 @@ Welcome to my Vim configuration tailored for developing Node.js applications. Af
 
 ## Clone [vim-plug](https://github.com/junegunn/vim-plug.git)
 
-```she
+```sh
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -73,9 +73,9 @@ set tags=./tags,tags;$HOME
 
 This line tells Vim where to find the tags file. Here's what each part of the line does:
 
-- `set tags`: This command sets the value of the `'tags'` option, which specifies the file or files to be used for tag searching
-- `./tags`: This specifies that Vim should look for a `tags` file in the current directory.
-- `tags;$HOME`: This specifies that Vim should also look for a `tags` file in the home directory.
+-   `set tags`: This command sets the value of the `'tags'` option, which specifies the file or files to be used for tag searching
+-   `./tags`: This specifies that Vim should look for a `tags` file in the current directory.
+-   `tags;$HOME`: This specifies that Vim should also look for a `tags` file in the home directory.
 
 ### Navigate using tags:
 
@@ -131,7 +131,6 @@ make VMRUNTIMEDIR=/usr/share/vim/vim9
 sudo make install
 ```
 
-
 #### To quickly get set and running, I've written the script of those commands above, which you can fetch and run
 
 ```sh
@@ -140,14 +139,15 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-
 ## Windows Compatibility
+
 While this Vim configuration is optimized for Debian-based systems, it can also be adapted for use on Windows. Here are some considerations and tips for setting up Vim on Windows:
 
 ### Installation
+
 1. Install Vim:
-You can install Vim on Windows using various methods. The simplest way is to download the installer from the official Vim website:  [Download Vim for Windows](https://www.vim.org/download.php)  
-Alternatively, you can use a package manager like Chocolatey:
+   You can install Vim on Windows using various methods. The simplest way is to download the installer from the official Vim website: [Download Vim for Windows](https://www.vim.org/download.php)  
+   Alternatively, you can use a package manager like Chocolatey:
 
 ```sh
 choco install vim
@@ -161,11 +161,12 @@ choco install ctags
 ```
 
 ### Configuration
+
 1. Vim Configuration File:
-On Windows, the Vim configuration file is typically located at `C:\Users\<YourUsername>\_vimrc` instead of `~/.vimrc`.
+   On Windows, the Vim configuration file is typically located at `C:\Users\<YourUsername>\_vimrc` instead of `~/.vimrc`.
 
 2. vim-plug:
-To install vim-plug on Windows, open a PowerShell or Command Prompt and run:
+   To install vim-plug on Windows, open a PowerShell or Command Prompt and run:
 
 ```cmd
 md ~\vimfiles\autoload
@@ -173,14 +174,15 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/junegunn/vim-plug/maste
 ```
 
 ### Additional Considerations
+
 1. Path Separators:  
-Ensure to use backslashes `(\)` for file paths in Windows. However, Vim usually understands both slashes, so you might not need to change paths in your .vimrc.
+   Ensure to use backslashes `(\)` for file paths in Windows. However, Vim usually understands both slashes, so you might not need to change paths in your .vimrc.
 
 2. Building Vim from Source:  
-Building Vim from source on Windows can be more complex compared to Debian-based systems. Consider using pre-built binaries or Windows Subsystem for Linux (WSL) to run a Linux environment within Windows. WSL allows you to run Linux distributions directly on Windows, which can simplify the setup process and resolve compatibility issues.
+   Building Vim from source on Windows can be more complex compared to Debian-based systems. Consider using pre-built binaries or Windows Subsystem for Linux (WSL) to run a Linux environment within Windows. WSL allows you to run Linux distributions directly on Windows, which can simplify the setup process and resolve compatibility issues.
 
 3. Clipboard Integration:  
-Clipboard integration may require additional configuration. In your .vimrc, you can set:
+   Clipboard integration may require additional configuration. In your .vimrc, you can set:
 
 ```vim
 set clipboard=unnamedplus
@@ -189,7 +191,7 @@ set clipboard=unnamedplus
 Ensure you have the appropriate version of Vim that supports clipboard operations. You might need to install gvim for full clipboard support.
 
 4. Shell Commands:  
-Some shell commands in your .vimrc may not work as expected on Windows. You can use Git Bash or WSL to provide a more Unix-like environment.
+   Some shell commands in your .vimrc may not work as expected on Windows. You can use Git Bash or WSL to provide a more Unix-like environment.
 
 Example Configuration for Windows
 Here’s an example of how you might adjust your .vimrc for Windows:
@@ -205,6 +207,7 @@ set clipboard=unnamedplus
 ```
 
 ### Generate Tags on Windows
+
 To generate ctags for your project on Windows, navigate to your project directory in Command Prompt or PowerShell and run:
 
 ```sh
@@ -212,7 +215,7 @@ ctags -R .
 ```
 
 ### Summary
-Windows users can successfully adapt this Vim configuration with some adjustments. Be aware of path differences, install the necessary tools using appropriate methods, and consider using WSL for a more seamless experience.
 
+Windows users can successfully adapt this Vim configuration with some adjustments. Be aware of path differences, install the necessary tools using appropriate methods, and consider using WSL for a more seamless experience.
 
 > **Note**: If you encounter issues, consult the documentation of individual plugins and ensure that all requirements are met.
