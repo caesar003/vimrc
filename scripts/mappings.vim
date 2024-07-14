@@ -34,14 +34,10 @@ nnoremap <leader>ft :set filetype=
 " {{{ Buffer navigation mappings
 nnoremap <silent>[b :bp<CR>
 nnoremap <silent>]b :bn<CR>
-nnoremap <silent> <leader>B :Buffers<CR>
 nnoremap <silent> <leader>c :call HandleBufferClose()<CR>
-nnoremap <silent> <leader>bg :call GoToBuffer()<CR>
-nnoremap <silent> <leader>bd :call DeleteBuffer()<CR>
 nnoremap <silent> <leader>b- :b#<CR>
 nnoremap <silent> <leader>bo :BufOnly<CR>
 nnoremap <leader>bO :BufOnly<space>
-nnoremap <silent><leader>l :call ToggleBuffers()<CR>
 " }}}
 
 
