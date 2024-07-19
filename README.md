@@ -1,5 +1,8 @@
 # .vimrc configuration
 
+
+Welcome to my Vim configuration tailored for developing Node.js applications. After experimenting with various setups, I've settled on this minimal configuration that suits my needs.
+
 **Important Note:**
 
 > This Vim configuration is tailored to my specific needs and preferences, optimized for developing Node.js applications. I've intentionally omitted popular plugins like [coc.vim](https://github.com/neoclide/coc.nvim) or [ale](https://github.com/dense-analysis/ale), which offer features like autocomplete and linting at the expense of increased complexity and resource usage.
@@ -10,7 +13,6 @@
 >
 > Remember, the essence of Vim lies in its flexibility and extensibility. Feel free to experiment and customize this configuration to better suit your individual needs and preferences. And if you're new to Vim or have questions about specific aspects of this setup, don't hesitate to reach me out for assistance.
 
-Welcome to my Vim configuration tailored for developing Node.js applications. After experimenting with various setups, I've settled on this minimal configuration that suits my needs.
 
 ## Clone [vim-plug](https://github.com/junegunn/vim-plug.git)
 
@@ -97,7 +99,7 @@ sudo apt install build-essential
 sudo apt-get build-dep vim # this one is important
 ```
 
-### Clone The repository
+### Clone Vim official repository
 
 ```sh
 git clone https://github.com/vim/vim ~/vim-repo
@@ -122,7 +124,7 @@ cd ~/vim-repo
             --prefix=$PREFIX
 ```
 
-Note: Change `--with-compiledby` to your own name or identifier.
+**Note:** Change `--with-compiledby` to your own name or identifier.
 
 ### Build and install Vim:
 

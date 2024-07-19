@@ -38,6 +38,7 @@ nnoremap <silent> <leader>c :call HandleBufferClose()<CR>
 nnoremap <silent> <leader>b- :b#<CR>
 nnoremap <silent> <leader>bo :BufOnly<CR>
 nnoremap <leader>bO :BufOnly<space>
+nnoremap <leader>B :Buffers<cr>
 " }}}
 
 
@@ -85,7 +86,6 @@ nnoremap <leader>sd :SDelete<CR>
 nnoremap <silent> <leader>/ :Commentary<CR>
 vnoremap <silent> <leader>/ :Commentary<CR> 
 " }}}
-
 
 " {{{ Disable arrow keys
 inoremap <Up> <NOP>

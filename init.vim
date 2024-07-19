@@ -6,9 +6,9 @@
 "_/    _/      _/  _/    _/    _/  _/          _/_/_/      
 "
 "  .vimrc
-"  Author: caesar https://github.com/caesar003
+"  Author: caesar - https://github.com/caesar003
 "  Repository: https://github.com/caesar003/vimrc
-"  Last Modified: "2024-07-05"
+"  Last Modified: "2024-07-14"
 "
 
 " Show smiling cat at start up

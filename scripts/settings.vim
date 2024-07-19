@@ -59,11 +59,16 @@ set statusline+=%=                 " Right align
 set statusline+=\ l:\%l\/\%L       " Line number of total lines
 set statusline+=\ c:\%c            " Column number
 set statusline+=\ %p%%             " Percentage through entire file
+
+
+set tags=./tags,tags;$HOME
 " }}}
 
 " {{{ Colorscheme and Theme Settings
 source $HOME/.vim/init/scripts/theme.vim
+
 highlight Comment cterm=italic
+
 highlight String cterm=italic gui=italic
 highlight Function cterm=italic gui=italic
 highlight Keyword cterm=italic gui=italic
