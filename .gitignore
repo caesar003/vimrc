@@ -4,3 +4,6 @@
 *.txt
 
 swapfiles/*
+
+autoload/
+plugged/

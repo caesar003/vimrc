@@ -27,6 +27,11 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
+" Ensure ~/.vim/swapfiles directory exists
+if !isdirectory(expand("~/.vim/swapfiles"))
+  call mkdir(expand("~/.vim/swapfiles"), "p")
+endif
+
 
 echom '>^.^<'
 
